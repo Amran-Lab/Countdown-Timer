@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World</title>
+        <style type="text/css">
+            .container{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .countdown
+            {                  
+                border:1px solid  #666666;   
+                width: 600px;
+                height: 280px;            
+                padding: 30px 50px;
+                background-color: #5F546E;
+                box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.825);
+                z-index: 2;
+            }
+            .row
+            {
+                display:flex;
+                width:auto;
+                float: center;
+            }
+            .Cell
+            {
+                float: center; /* fix for  buggy browsers */
+                text-align: center;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                flex: 1;
+                font-size: 40px;
+                vertical-align:top;
+            }
+            .NCell
+            {
+                float: center; /* fix for  buggy browsers */
+                text-align: center;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                border-radius: 10px;
+                background-color: rgba(128, 79, 125);
+                box-shadow: 0 0 8px 8px rgba(128, 79, 125,0.2);
+                width: 60px;
+                font-size: 70px;
+                color: #fcf8fb;
+            }
+            .Space
+            {
+                float: center; /* fix for  buggy browsers */   
+                padding-bottom: 5px;
+                padding-top: 5px;
+                padding-left: 50px;
+                padding-right: 50px;
+                font-size: 40px;
+                text-align: center;
+            }
+            .Head {
+                width: 600px;
+                text-align: center;           
+                padding-left: 30px;
+                padding-right: 30px;
+                position: top;               
+            }
+            .btn {
+                border: 1px solid rgb(0,0,0,0);
+                background-color: inherit;        
+                font-size: 40px;
+                cursor: pointer;
+                border-radius: 10px;
+                display: inline-block;
+            }
+            .btn:hover {
+                border: 1px solid black;
+                background-color: inherit;       
+                font-size: 40px;
+                cursor: pointer;
+                display: inline-block;
+                border-radius: 10px;
+            }
+            .btninfo {
+                border: 1px solid black;
+                background-color: inherit;
+                box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.0);
+                font-size: 40px;
+                cursor: pointer;
+                margin-right: 5px;
+                border-radius: 10px;
+                float: right;      
+            }
+            .btninfo:hover {
+                border: 2px solid black;
+                background-color: inherit;
+                box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.2);
+                font-size: 40px;
+                cursor: pointer;
+                display: inline-block;
+                border-radius: 10px;
+            }
+            .btnreset{
+                border: 1px solid black;
+                background-color: inherit;
+                box-shadow: 0 0px 8px 8px rgba(0, 0, 0, 0.0);
+                font-size: 40px;
+                cursor: pointer;
+                
+                border-radius: 10px;
+                float: left;
+            }
+            .btnreset:hover {
+                border: 2px solid black;
+                background-color: inherit;
+                box-shadow: 0 0px 8px 8px rgba(0, 0, 0, 0.2);
+                font-size: 40px;
+                cursor: pointer;
+                display: inline-block;
+                border-radius: 10px;
+            }
+            del {
+                color: blue;
+            }
+            </style>
+
+    </head>
+    <body>
+
+	<div class="container">
+    <!--
+        <div class="Head">
+        <div class="row">
+            <div class="Cell">Hours</div>
+            <div class="Space">&nbsp;</div>
+            
+            <div class="Cell">Minutes</div>
+            <div class="Space">&nbsp;</div>
+            <div class="Cell">Seconds</div>
+        </div>
+        </div>
+    -->
+		<div class="countdown">
+            
+            <div class="row">
+                <div class="Cell">Hours</div>
+                <div class="Space">&nbsp;</div>
+                <div class="Cell">Minutes</div>
+                <div class="Space">&nbsp;</div>
+                <div class="Cell">Seconds</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="NCell" style='color:red;text-decoration:line-through'>
+                    <span style='color:rgb(255, 255, 255)' id ="ho1">0<span>                  
+                  </div>
+                <div class="SmallSpace">&nbsp;</div>
+                <div class="NCell" style='color:red;text-decoration:line-through'>
+                    <span style='color:rgb(255, 255, 255)' id ="ho2">0<span>                  
+                  </div>
+                <div class="Space">:</div>
+                <div class="NCell" id ="mo1">0</div>
+                <div class="SmallSpace">&nbsp;</div>
+                <div class="NCell" id = "mo2">0</div>
+                <div class="Space">:</div>
+                <div class="NCell" id = "so1">0</div>
+                <div class="SmallSpace">&nbsp;</div>
+                <div class="NCell" id = "so2">0</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="Cell">
+                    <button class="btn up_hours" onclick="downDoop('ho1','ho2')">&#9660</button>
+                    <button class="btn info" onclick="upDoop('ho1','ho2')">&#9650</button>
+                </div>
+                <div class="Space">&nbsp;</div>
+                <div class="Cell">
+                    <button class="btn up_hours" onclick="downDoop('mo1','mo2')">&#9660</button>
+                    <button class="btn info" onclick="upDoop('mo1','mo2')">&#9650</button>
+                </div>
+                <div class="Space">&nbsp;</div>
+                <div class="Cell">
+                    <button class="btn up_hours" onclick="downDoop('so1','so2')">&#9660</button>
+                    <button class="btn info" onclick="upDoop('so1','so2')">&#9650</button>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="Cell">
+                    <button class="btnreset" onclick="resetInt()">RESET</button>       
+                    <button class="btninfo" onclick="startInt()">START</button>         
+                    <button class="btninfo" onclick="stopInt()">STOP</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    <script>
+
+        function countdown(newTime) {
+            var now = new Date().getTime();          
+            
+            hours = new Date().getHours();
+            
+            minutes = new Date().getMinutes();
+            seconds = new Date().getSeconds();
+
+
+            var now = new Date();
+            var timeLeft = newTime.getTime() - now.getTime();
+            if (timeLeft < 0){
+                timeLeft = 0
+                stopInt();
+            }
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            //document.getElementById("test").innerHTML = "tlef = " +  timeLeft + "- newT= " + newTime + "- CurrT= " + now;
+            var hours_1 = Math.floor((hours / 10 ));
+            var hours_2 = Math.floor((hours % 10 ));
+            var min_1 = Math.floor((minutes / 10 ));
+            var min_2 = Math.floor((minutes % 10 ));
+            var sec_1 = Math.floor((seconds / 10 ));
+            var sec_2 = Math.floor((seconds % 10 ));
+            document.getElementById("ho1").innerHTML = hours_1;
+            document.getElementById("ho2").innerHTML = hours_2;
+            document.getElementById("mo1").innerHTML = min_1;
+            document.getElementById("mo2").innerHTML = min_2;
+            document.getElementById("so1").innerHTML = sec_1;
+            document.getElementById("so2").innerHTML = sec_2;
+
+    
+        }
+        function startInt() {
+            var hours_1 = parseInt(document.getElementById("ho1").innerHTML);
+            var hours_2 = parseInt(document.getElementById("ho2").innerHTML);
+            var min_1 = parseInt(document.getElementById("mo1").innerHTML);
+            var min_2 = parseInt(document.getElementById("mo2").innerHTML);
+            var sec_1 = parseInt(document.getElementById("so1").innerHTML);
+            var sec_2 = parseInt(document.getElementById("so2").innerHTML);
+            //Convert To Seconds
+            var timothy = sec_2 + 10*(sec_1 + 6*(min_2 + 10*(min_1 + 6*(hours_2 + 10*(hours_1)))));
+            //document.getElementById("test").innerHTML = timothy
+            var newTime = new Date(new Date().getTime() + timothy * 1000);
+            countdown(newTime);                     
+            timey = setInterval(function() { countdown(newTime); }, 1000);
+
+        }
+        //startInt();
+        function stopInt() {
+            clearInterval(timey);
+
+        }
+        function resetInt() {
+            clearInterval(timey);
+            document.getElementById("ho1").innerHTML = 0;
+            document.getElementById("ho2").innerHTML = 0;
+            document.getElementById("mo1").innerHTML = 0;
+            document.getElementById("mo2").innerHTML = 0;
+            document.getElementById("so1").innerHTML = 0;
+            document.getElementById("so2").innerHTML = 0;
+
+        }
+        function upDoop(id1,id2) {
+            var num1 = parseInt(document.getElementById(id1).innerHTML);
+            var num2 = parseInt(document.getElementById(id2).innerHTML);
+            var number = num1*10 + num2 + 1
+            if (id1 == "mo1" || id1 == "so1"){
+                number = (number % 60);
+            }
+            else {
+                number = (number % 24);
+
+            }
+
+            
+            num1 = Math.floor((number / 10 ));
+            num2 = Math.floor((number % 10 ));
+
+
+            document.getElementById(id1).innerHTML = num1;
+            document.getElementById(id2).innerHTML = num2;
+
+        }
+        function downDoop(id1,id2) {
+            var num1 = parseInt(document.getElementById(id1).innerHTML);
+            var num2 = parseInt(document.getElementById(id2).innerHTML);
+            var number = num1*10 + num2 - 1
+            if ((id1 == "mo1" || id1 == "so1") && number == -1){
+                number = 59;
+            }
+            else if (number == -1) {
+                number = 23;
+
+            }
+            num1 = Math.floor((number / 10 ));
+            num2 = Math.floor((number % 10 ));
+
+            document.getElementById(id1).innerHTML = num1;
+            document.getElementById(id2).innerHTML = num2;
+        }
+        
+  
+    </script>
+</html>
