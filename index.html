@@ -126,9 +126,6 @@
             <script>
 
                 function countdown(newTime,timothy) {         
-                    hours = new Date().getHours();
-                    minutes = new Date().getMinutes();
-                    seconds = new Date().getSeconds();
                     var now = new Date();
                     var timeLeft = newTime.getTime() - now.getTime();
                     if (timeLeft < 0){
@@ -153,7 +150,7 @@
                     document.getElementById("mo2").innerHTML = min_2;
                     document.getElementById("so1").innerHTML = sec_1;
                     document.getElementById("so2").innerHTML = sec_2;
-                    timey = setTimeout(function() { countdown(newTime); }, timothy);
+                    timey = setTimeout(function() { countdown(newTime,timothy); });
                 }
                 
                 function startInt() {
