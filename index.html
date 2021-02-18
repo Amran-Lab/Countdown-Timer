@@ -123,6 +123,108 @@
                 color: blue;
             }
             </style>
+            <script>
+
+                function countdown(newTime,timothy) {         
+                    hours = new Date().getHours();
+                    minutes = new Date().getMinutes();
+                    seconds = new Date().getSeconds();
+                    var now = new Date();
+                    var timeLeft = newTime.getTime() - now.getTime();
+                    if (timeLeft < 0){
+                        timeLeft = 0
+                        stopInt();
+                    }
+                    var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    //document.getElementById("test").innerHTML = "tlef = " +  timeLeft + "- newT= " + newTime + "- CurrT= " + now;
+                    var hours_1 = Math.floor((hours / 10 ));
+                    var hours_2 = Math.floor((hours % 10 ));
+                    var min_1 = Math.floor((minutes / 10 ));
+                    var min_2 = Math.floor((minutes % 10 ));
+                    var sec_1 = Math.floor((seconds / 10 ));
+                    var sec_2 = Math.floor((seconds % 10 ));
+                    document.getElementById("ho1").innerHTML = hours_1;
+                    document.getElementById("ho2").innerHTML = hours_2;
+                    document.getElementById("mo1").innerHTML = min_1;
+                    document.getElementById("mo2").innerHTML = min_2;
+                    document.getElementById("so1").innerHTML = sec_1;
+                    document.getElementById("so2").innerHTML = sec_2;
+                    timey = setTimeout(function() { countdown(newTime); }, timothy);
+                }
+                
+                function startInt() {
+                    var hours_1 = parseInt(document.getElementById("ho1").innerHTML);
+                    var hours_2 = parseInt(document.getElementById("ho2").innerHTML);
+                    var min_1 = parseInt(document.getElementById("mo1").innerHTML);
+                    var min_2 = parseInt(document.getElementById("mo2").innerHTML);
+                    var sec_1 = parseInt(document.getElementById("so1").innerHTML);
+                    var sec_2 = parseInt(document.getElementById("so2").innerHTML);
+                    //Convert To Seconds
+                    var timothy = sec_2 + 10*(sec_1 + 6*(min_2 + 10*(min_1 + 6*(hours_2 + 10*(hours_1)))));
+                    //document.getElementById("test").innerHTML = timothy
+                    var newTime = new Date(new Date().getTime() + timothy * 1000);
+                    countdown(newTime,timothy);                     
+                    //timey = setInterval(function() { countdown(newTime); }, 1000);
+        
+                }
+                
+                function stopInt() {
+                    clearInterval(timey);
+        
+                }
+        
+                function resetInt() {
+                    try {
+                        clearInterval(timey);
+                    }
+                    catch(err) {
+                        console.log("boo")
+                    }
+                    document.getElementById("ho1").innerHTML = 0;
+                    document.getElementById("ho2").innerHTML = 0;
+                    document.getElementById("mo1").innerHTML = 0;
+                    document.getElementById("mo2").innerHTML = 0;
+                    document.getElementById("so1").innerHTML = 0;
+                    document.getElementById("so2").innerHTML = 0;
+        
+                }
+        
+                function upDoop(id1,id2) {
+                    var num1 = parseInt(document.getElementById(id1).innerHTML);
+                    var num2 = parseInt(document.getElementById(id2).innerHTML);
+                    var number = num1*10 + num2 + 1
+                    if (id1 == "mo1" || id1 == "so1"){
+                        number = (number % 60);
+                    }
+                    else {
+                        number = (number % 24);
+                    }
+                    num1 = Math.floor((number / 10 ));
+                    num2 = Math.floor((number % 10 ));
+                    document.getElementById(id1).innerHTML = num1;
+                    document.getElementById(id2).innerHTML = num2;
+        
+                }
+        
+                function downDoop(id1,id2) {
+                    var num1 = parseInt(document.getElementById(id1).innerHTML);
+                    var num2 = parseInt(document.getElementById(id2).innerHTML);
+                    var number = num1*10 + num2 - 1
+                    if ((id1 == "mo1" || id1 == "so1") && number == -1){
+                        number = 59;
+                    }
+                    else if (number == -1) {
+                        number = 23;
+        
+                    }
+                    num1 = Math.floor((number / 10 ));
+                    num2 = Math.floor((number % 10 ));
+                    document.getElementById(id1).innerHTML = num1;
+                    document.getElementById(id2).innerHTML = num2;
+                }
+            </script>
 
     </head>
     <body>
@@ -197,118 +299,5 @@
     </div>
 
     </body>
-    <script>
 
-        function countdown(newTime) {
-            var now = new Date().getTime();          
-            
-            hours = new Date().getHours();
-            
-            minutes = new Date().getMinutes();
-            seconds = new Date().getSeconds();
-
-
-            var now = new Date();
-            var timeLeft = newTime.getTime() - now.getTime();
-            if (timeLeft < 0){
-                timeLeft = 0
-                stopInt();
-            }
-            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            //document.getElementById("test").innerHTML = "tlef = " +  timeLeft + "- newT= " + newTime + "- CurrT= " + now;
-            var hours_1 = Math.floor((hours / 10 ));
-            var hours_2 = Math.floor((hours % 10 ));
-            var min_1 = Math.floor((minutes / 10 ));
-            var min_2 = Math.floor((minutes % 10 ));
-            var sec_1 = Math.floor((seconds / 10 ));
-            var sec_2 = Math.floor((seconds % 10 ));
-            document.getElementById("ho1").innerHTML = hours_1;
-            document.getElementById("ho2").innerHTML = hours_2;
-            document.getElementById("mo1").innerHTML = min_1;
-            document.getElementById("mo2").innerHTML = min_2;
-            document.getElementById("so1").innerHTML = sec_1;
-            document.getElementById("so2").innerHTML = sec_2;
-
-    
-        }
-        function startInt() {
-            var hours_1 = parseInt(document.getElementById("ho1").innerHTML);
-            var hours_2 = parseInt(document.getElementById("ho2").innerHTML);
-            var min_1 = parseInt(document.getElementById("mo1").innerHTML);
-            var min_2 = parseInt(document.getElementById("mo2").innerHTML);
-            var sec_1 = parseInt(document.getElementById("so1").innerHTML);
-            var sec_2 = parseInt(document.getElementById("so2").innerHTML);
-            //Convert To Seconds
-            var timothy = sec_2 + 10*(sec_1 + 6*(min_2 + 10*(min_1 + 6*(hours_2 + 10*(hours_1)))));
-            //document.getElementById("test").innerHTML = timothy
-            var newTime = new Date(new Date().getTime() + timothy * 1000);
-            countdown(newTime);                     
-            timey = setInterval(function() { countdown(newTime); }, 1000);
-
-        }
-        //startInt();
-        function stopInt() {
-            clearInterval(timey);
-
-        }
-        function resetInt() {
-            try {
-                clearInterval(timey);
-            }
-            catch(err) {
-                console.log("boo")
-            }
-            
-            document.getElementById("ho1").innerHTML = 0;
-            document.getElementById("ho2").innerHTML = 0;
-            document.getElementById("mo1").innerHTML = 0;
-            document.getElementById("mo2").innerHTML = 0;
-            document.getElementById("so1").innerHTML = 0;
-            document.getElementById("so2").innerHTML = 0;
-
-        }
-        function upDoop(id1,id2) {
-            var num1 = parseInt(document.getElementById(id1).innerHTML);
-            var num2 = parseInt(document.getElementById(id2).innerHTML);
-            var number = num1*10 + num2 + 1
-            if (id1 == "mo1" || id1 == "so1"){
-                number = (number % 60);
-            }
-            else {
-                number = (number % 24);
-
-            }
-
-            
-            num1 = Math.floor((number / 10 ));
-            num2 = Math.floor((number % 10 ));
-
-
-            document.getElementById(id1).innerHTML = num1;
-            document.getElementById(id2).innerHTML = num2;
-
-        }
-        function downDoop(id1,id2) {
-            var num1 = parseInt(document.getElementById(id1).innerHTML);
-            var num2 = parseInt(document.getElementById(id2).innerHTML);
-            var number = num1*10 + num2 - 1
-            if ((id1 == "mo1" || id1 == "so1") && number == -1){
-                number = 59;
-            }
-            else if (number == -1) {
-                number = 23;
-
-            }
-            num1 = Math.floor((number / 10 ));
-            num2 = Math.floor((number % 10 ));
-
-            document.getElementById(id1).innerHTML = num1;
-            document.getElementById(id2).innerHTML = num2;
-        }
-        
-  
-    </script>
 </html>
