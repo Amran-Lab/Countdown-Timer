@@ -245,7 +245,7 @@
             var timothy = sec_2 + 10*(sec_1 + 6*(min_2 + 10*(min_1 + 6*(hours_2 + 10*(hours_1)))));
             //document.getElementById("test").innerHTML = timothy
             var newTime = new Date(new Date().getTime() + timothy * 1000);
-            var x = countdown(newTime);                     
+            countdown(newTime);                     
             timey = setInterval(function() { countdown(newTime); }, 1000);
 
         }
