@@ -28,4 +28,4 @@ jobs:
         aws s3 cp index.html s3://amran-online-cv/index.html
     - name: Cloudfront Invalidation
       run: |
-        aws cloudfront create-invalidation --distribution-id E3H7PRB2FDWZ5I --paths "/index.html"
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.Cloudfront }} --paths "/index.html"

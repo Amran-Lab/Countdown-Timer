@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello World</title>
+        <title>Countdown</title>
         <style type="text/css">
             .container{
                 position: absolute;
@@ -245,7 +245,7 @@
             var timothy = sec_2 + 10*(sec_1 + 6*(min_2 + 10*(min_1 + 6*(hours_2 + 10*(hours_1)))));
             //document.getElementById("test").innerHTML = timothy
             var newTime = new Date(new Date().getTime() + timothy * 1000);
-            countdown(newTime);                     
+            var x = countdown(newTime);                     
             timey = setInterval(function() { countdown(newTime); }, 1000);
 
         }
@@ -255,7 +255,13 @@
 
         }
         function resetInt() {
-            clearInterval(timey);
+            try {
+                clearInterval(timey);
+            }
+            catch(err) {
+                console.log("boo")
+            }
+            
             document.getElementById("ho1").innerHTML = 0;
             document.getElementById("ho2").innerHTML = 0;
             document.getElementById("mo1").innerHTML = 0;
